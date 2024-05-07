@@ -5,9 +5,11 @@ import cavm.prototipo.agricultura.producto.model.dto.Producto;
 import cavm.prototipo.agricultura.producto.model.entity.ProductoEntity;
 import cavm.prototipo.agricultura.producto.repository.IProductoRepository;
 import cavm.prototipo.agricultura.producto.service.IProductoService;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,6 +30,21 @@ public class ProductoService implements IProductoService {
         ProductoEntity entity = mapper.toEntity(product);
         ProductoEntity savedEntity = repository.save(entity);
         return mapper.toModel(savedEntity);
+    }
+
+    @Override
+    @Transactional
+    public Producto update(Producto product) {
+        return repository.findById(product.getId())
+                .map(x -> {
+                    x.setNombre(product.getNombre());
+                    x.setDescripcion(product.getDescripcion());
+                    x.setPrecio(product.getPrecio());
+                    x.setCantidadDisponible(product.getCantidadDisponible());
+                    x.setRegisterDate(new Date());
+                    x.setState(product.getState());
+                    return mapper.toModel(repository.save(x));
+                }).orElse(null);
     }
 
     @Override

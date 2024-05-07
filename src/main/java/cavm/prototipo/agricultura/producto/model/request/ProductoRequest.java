@@ -10,10 +10,12 @@ import java.util.Date;
 @Setter
 public class ProductoRequest {
 
+    private Long id;
     private String nombre;
     private String descripcion;
     private Double precio;
     private Integer cantidadDisponible;
     private User agricultor;
     private String agricultorDocumentNumber;
+    private Boolean state;
 }

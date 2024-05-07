@@ -34,6 +34,22 @@ public class ProductoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(iProductoService.create(product));
     }
 
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> update(@RequestBody ProductoRequest request) {
+        Producto product = Producto.builder()
+                .id(request.getId())
+                .nombre(request.getNombre())
+                .descripcion(request.getDescripcion())
+                .precio(request.getPrecio())
+                .cantidadDisponible(request.getCantidadDisponible())
+                .agricultor(request.getAgricultor())
+                .registerDate(new Date())
+                .state(request.getState())
+                .build();
+        Producto updated = iProductoService.update(product);
+        return updated == null ? ResponseEntity.status(HttpStatus.NOT_FOUND).build() : ResponseEntity.status(HttpStatus.OK).build();
+    }
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Producto>> getAll() {
         return new ResponseEntity<>(iProductoService.getAll(), HttpStatus.OK);

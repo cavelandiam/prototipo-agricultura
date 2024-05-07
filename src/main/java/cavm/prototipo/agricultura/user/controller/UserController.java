@@ -45,7 +45,7 @@ public class UserController {
                 .email(request.getEmail())
                 .phone(request.getPhone())
                 .birth(request.getBirth())
-                .isFarmer(true)
+                .isFarmer(request.isFarmer())
                 .registerDate(new Date())
                 .state(true)
                 .build();
