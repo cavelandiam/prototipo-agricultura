@@ -13,10 +13,11 @@ public class PagoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long pagoId;
+    @Column(name = "id")
+    private Long id;
 
     @OneToOne
-    @JoinColumn(name = "pedido_id", nullable = false)
+    @JoinColumn(name = "id_pedido", nullable = false)
     private PedidoEntity pedido;
 
     @Temporal(TemporalType.TIMESTAMP)

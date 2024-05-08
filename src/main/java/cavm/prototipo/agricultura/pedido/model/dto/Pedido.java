@@ -1,7 +1,7 @@
 package cavm.prototipo.agricultura.pedido.model.dto;
 
-import cavm.prototipo.agricultura.detallePedido.model.entity.DetallePedidoEntity;
-import cavm.prototipo.agricultura.user.model.entity.UserEntity;
+import cavm.prototipo.agricultura.detallePedido.model.dto.DetallePedido;
+import cavm.prototipo.agricultura.user.model.dto.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,10 +15,10 @@ import java.util.List;
 @NoArgsConstructor
 public class Pedido {
 
-    private Long pedidoId;
-    private UserEntity consumidor;
+    private Long id;
+    private User cliente;
     private Date fechaPedido;
     private String estado;
-    private List<DetallePedidoEntity> detallesPedido;
+    private List<DetallePedido> detallesPedido;
     private Double total;
 }

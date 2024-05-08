@@ -24,7 +24,7 @@ public class ProductoEntity {
     @Column(name = "cantidadDisponible")
     private Integer cantidadDisponible;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "id_agricultor", nullable = false)
     private UserEntity agricultor;
     @Column(name = "register_date")
     private Date registerDate;

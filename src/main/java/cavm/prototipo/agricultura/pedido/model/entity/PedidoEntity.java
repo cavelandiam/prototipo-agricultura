@@ -15,11 +15,12 @@ public class PedidoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long pedidoId;
+    @Column(name = "id")
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "consumidor_id", nullable = false)
-    private UserEntity consumidor;
+    @JoinColumn(name = "id_cliente", nullable = false)
+    private UserEntity cliente;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
@@ -28,7 +29,7 @@ public class PedidoEntity {
     @Column(nullable = false)
     private String estado;
 
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetallePedidoEntity> detallesPedido;
 
     @Column(nullable = false)

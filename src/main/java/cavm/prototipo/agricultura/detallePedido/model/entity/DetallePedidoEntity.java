@@ -12,14 +12,15 @@ public class DetallePedidoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "pedido_id", nullable = false)
+    @JoinColumn(name = "id_pedido", nullable = false)
     private PedidoEntity pedido;
 
     @ManyToOne
-    @JoinColumn(name = "producto_id", nullable = false)
+    @JoinColumn(name = "id_producto", nullable = false)
     private ProductoEntity producto;
 
     @Column(nullable = false)

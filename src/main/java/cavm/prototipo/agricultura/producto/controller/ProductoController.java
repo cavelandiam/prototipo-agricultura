@@ -20,7 +20,7 @@ public class ProductoController {
         this.iProductoService = iProductoService;
     }
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Producto> create(@RequestBody ProductoRequest request) {
         Producto product = Producto.builder()
                 .nombre(request.getNombre())
@@ -34,7 +34,7 @@ public class ProductoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(iProductoService.create(product));
     }
 
-    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> update(@RequestBody ProductoRequest request) {
         Producto product = Producto.builder()
                 .id(request.getId())
