@@ -19,7 +19,7 @@ public class User {
     private String email;
     private String phone;
     private Date birth;
-    private boolean isFarmer;
+    private Boolean isFarmer;
     private Date registerDate;
     private boolean state;
 }

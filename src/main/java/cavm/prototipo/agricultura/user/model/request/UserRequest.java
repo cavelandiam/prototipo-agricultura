@@ -13,7 +13,7 @@ public class UserRequest {
     private String lastname;
     private String username;
     private String email;
-    private boolean isFarmer;
+    private Boolean isFarmer;
     private String phone;
     private Date birth;
 }

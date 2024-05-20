@@ -29,7 +29,7 @@ public class UserEntity {
     @Column(name = "birth")
     private Date birth;
     @Column(name = "is_farmer")
-    private boolean isFarmer;
+    private Boolean isFarmer;
     @Column(name = "register_date")
     private Date registerDate;
     @Column(name = "state")
